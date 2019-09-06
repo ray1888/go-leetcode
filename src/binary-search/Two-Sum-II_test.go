@@ -2,18 +2,6 @@ package binary_search
 
 import "testing"
 
-/*
-[2,7,11,15]
-9
-[1,2]
-[2,3,4]
-6
-[1,3]
-[-1,0]
--1
-[1,2]
-*/
-
 func TestTwoSum2(t *testing.T) {
 	var tests = []struct {
 		in       input
