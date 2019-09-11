@@ -66,6 +66,6 @@ func (t *Trie) Startswith(url []string) bool {
 	return node != nil
 }
 
-//func(t *Trie)Delete(url []string) bool{
+//func(t *Trie)Delete(url []stringProblem) bool{
 //
 //}
