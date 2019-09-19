@@ -11,10 +11,10 @@ func TestPalindromePartition2(t *testing.T) {
 		{"aab", 1},
 		{"abba", 1},
 		{"", 0},
-		{"abcga", -1},
 		{"aa", 0},
 		{"abcba", 0},
 		{"aabcc", 2},
+		{"abcga", 5},
 	}
 	for _, tt := range tests {
 		actual := minCut(tt.in)
