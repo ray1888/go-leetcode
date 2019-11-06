@@ -1,6 +1,9 @@
 package DynamicProgramming
 
-import "math"
+import (
+	"errors"
+	"math"
+)
 
 func max(a, b int) int {
 	if a > b {
@@ -10,9 +13,9 @@ func max(a, b int) int {
 	}
 }
 
-func maxSubArray(nums []int) int {
+func maxSubArray(nums []int) (int, error) {
 	if len(nums) == 0 {
-		return 0
+		return 0, errors.New("length should be bigger than 0")
 	}
 	cur := 0
 	maxium := -int((math.Pow(2, 32)))
@@ -25,5 +28,5 @@ func maxSubArray(nums []int) int {
 		maxium = max(cur, maxium)
 
 	}
-	return maxium
+	return maxium, nil
 }

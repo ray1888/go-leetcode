@@ -19,3 +19,21 @@ func preorderTraversal(root *datastructure.TreeNode) []int {
 	preorder(root, &result)
 	return result
 }
+
+//func inorder(root *datastructure.TreeNode, result *[]int) {
+//	if root == nil {
+//		return
+//	}
+//	*result = append(*result, root.Val)
+//	preorder(root.Left, result)
+//	preorder(root.Right, result)
+//}
+
+func postorder(root *datastructure.TreeNode, result *[]int) {
+	if root == nil {
+		return
+	}
+	preorder(root.Left, result)
+	preorder(root.Right, result)
+	*result = append(*result, root.Val)
+}
