@@ -38,7 +38,7 @@ func minDistance(word1 string, word2 string) int {
 
 	/*
 		here i, j is to fill dp,dp[0][0] mean two input both is "",
-		so dp[i][j] map to string compare word1[i-1] and word2[j-1]
+		so dp[i][j] mapRelated to string compare word1[i-1] and word2[j-1]
 	*/
 	for i := 1; i < length; i++ {
 		for j := 1; j < width; j++ {
