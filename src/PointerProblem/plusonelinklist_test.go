@@ -2,23 +2,6 @@ package PointerProblem
 
 import "testing"
 
-type Test struct {
-	Name   string
-	Input  *ListNode
-	Output *ListNode
-}
-
-func genListNode(data []int) *ListNode {
-	head := new(ListNode)
-	p := head
-	for _, value := range data {
-		p.Val = value
-		p.Next = new(ListNode)
-		p = head.Next
-	}
-	return head
-}
-
 func TestPlusOneLinkList(t *testing.T) {
 	tests := []Test{
 		{Name: "testing normal", Input: genListNode([]int{1, 2, 3}), Output: genListNode([]int{1, 2, 4})},
