@@ -14,9 +14,9 @@ func genListNode(data []int) *ListNode {
 	for _, value := range data {
 		p.Val = value
 		p.Next = new(ListNode)
-		p = head.Next
+		p = p.Next
 	}
-	return head
+	return head.Next
 }
 
 func TestOddEvenList(t *testing.T) {
