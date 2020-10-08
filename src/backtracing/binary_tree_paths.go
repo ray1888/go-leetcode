@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func dfs(node *datastructure.TreeNode, elem []int, result *[]string) {
+func dfsTreePath(node *datastructure.TreeNode, elem []int, result *[]string) {
 	if node.Left == nil && node.Right == nil {
 		elem = append(elem, node.Val)
 		s := make([]string, 0)
@@ -20,10 +20,10 @@ func dfs(node *datastructure.TreeNode, elem []int, result *[]string) {
 	}
 	elem = append(elem, node.Val)
 	if node.Left != nil {
-		dfs(node.Left, elem, result)
+		dfsTreePath(node.Left, elem, result)
 	}
 	if node.Right != nil {
-		dfs(node.Right, elem, result)
+		dfsTreePath(node.Right, elem, result)
 	}
 	elem = elem[:len(elem)-1]
 }
@@ -34,6 +34,6 @@ func binaryTreePaths(root *datastructure.TreeNode) []string {
 	}
 	result := make([]string, 0)
 	elem := make([]int, 0)
-	dfs(root, elem, &result)
+	dfsTreePath(root, elem, &result)
 	return result
 }
