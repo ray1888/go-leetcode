@@ -95,3 +95,49 @@ func BellmanFord(times [][]int, N int, K int) int {
 	}
 	return dist[N-1]
 }
+
+func SPFAAlogorithm(times [][]int, N int, K int) int {
+	graph := make([][]int, N+1)
+	for index := range graph {
+		graph[index] = make([]int, N+1)
+		for k := 0; k < N+1; k++ {
+			graph[index][k] = math.MaxInt32
+		}
+	}
+	dist := make([]int, N+1)
+	WorkingQueue := make([]int, 0)
+	InQueue := make([]bool, N+1)
+	for index := range dist {
+		dist[index] = math.MaxInt32
+	}
+	for _, item := range times {
+		graph[item[0]][item[1]] = item[2]
+	}
+	dist[K] = 0
+	InQueue[K] = true
+	WorkingQueue = append(WorkingQueue, K)
+	for len(WorkingQueue) > 0 {
+		u := WorkingQueue[0]
+		WorkingQueue = WorkingQueue[1:]
+		InQueue[u] = false
+		for v, val := range graph[u] {
+			// if val not in queue, append
+			if v == 0 || v == u {
+				continue
+			}
+			if dist[v] > dist[u]+val {
+				dist[v] = dist[u] + val
+				if !InQueue[v] {
+					WorkingQueue = append(WorkingQueue, v)
+					InQueue[v] = true
+				}
+			}
+		}
+	}
+	dist = dist[1:]
+	sort.Ints(dist)
+	if dist[N-1] == math.MaxInt32 {
+		return -1
+	}
+	return dist[N-1]
+}
