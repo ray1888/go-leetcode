@@ -141,3 +141,46 @@ func SPFAAlogorithm(times [][]int, N int, K int) int {
 	}
 	return dist[N-1]
 }
+
+func FloydWarshallAlgorithm(times [][]int, N int, K int) int {
+	graph := make([][]int, N+1)
+	for i := 0; i < N+1; i++ {
+		emptyList := make([]int, N+1)
+		for j := 0; j < N+1; j++ {
+			emptyList[j] = math.MaxInt32
+		}
+		graph[i] = emptyList
+	}
+
+	dist := make([][]int, N+1)
+	for i := 0; i < N+1; i++ {
+		emptyList := make([]int, N+1)
+		for j := 0; j < N+1; j++ {
+			emptyList[j] = math.MaxInt32
+		}
+		dist[i] = emptyList
+	}
+
+	for _, item := range times {
+		graph[item[0]][item[1]] = item[2]
+		dist[item[0]][item[1]] = item[2]
+	}
+
+	for k := 1; k < N+1; k++ {
+		for i := 1; i < N+1; i++ {
+			for j := 1; j < N+1; j++ {
+				if dist[i][j] > dist[i][k]+dist[k][j] {
+					dist[i][j] = dist[i][k] + dist[k][j]
+				}
+			}
+		}
+	}
+	sort.Ints(dist[K])
+	maxValue := 0
+	for _, item := range dist[K] {
+		if item != math.MaxInt32 && item > maxValue {
+			maxValue = item
+		}
+	}
+	return maxValue
+}
