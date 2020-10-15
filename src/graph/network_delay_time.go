@@ -1,6 +1,7 @@
 package graph
 
 import (
+	"fmt"
 	"math"
 	"sort"
 )
@@ -42,6 +43,49 @@ func networkDelayTime(times [][]int, N int, K int) int {
 			if !st[item] && graph[index][item] != -1 && dist[index] != math.MaxInt32 && dist[item] > dist[index]+graph[index][item] {
 				dist[item] = dist[index] + graph[index][item]
 			}
+		}
+	}
+	dist = dist[1:]
+	sort.Ints(dist)
+	if dist[N-1] == math.MaxInt32 {
+		return -1
+	}
+	return dist[N-1]
+}
+
+func BellmanFord(times [][]int, N int, K int) int {
+	graph := make([][]int, N+1)
+	for index := range graph {
+		graph[index] = make([]int, N+1)
+		for k := 0; k < N+1; k++ {
+			graph[index][k] = -1
+		}
+	}
+	dist := make([]int, N+1)
+	for index := range dist {
+		dist[index] = math.MaxInt32
+	}
+
+	dist[K] = 0
+	// 松弛算法，对每个可达得边全部计算一次
+	for i := 0; i < N-1; i++ {
+		for j := 0; j < len(times); j++ {
+			u := times[j][0]
+			v := times[j][1]
+			weight := times[j][2]
+			if dist[u] != math.MaxInt32 && dist[v] > dist[u]+weight {
+				dist[v] = dist[u] + weight
+			}
+		}
+	}
+	// 计算是否含有负环
+	for i := 0; i < len(times); i++ {
+		u := times[i][0]
+		v := times[i][1]
+		weight := times[i][2]
+		if dist[u] != math.MaxInt32 && dist[v] > dist[u]+weight {
+			fmt.Println("has negative cycle")
+			return -1
 		}
 	}
 	dist = dist[1:]
