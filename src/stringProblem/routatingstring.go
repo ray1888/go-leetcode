@@ -11,8 +11,8 @@ func rotateString(A string, B string) bool {
 		i := start
 		j := 0
 		for i < nn && j < n && aa[i] == B[j] {
-			i += 1
-			j += 1
+			i++
+			j++
 		}
 		if j == n {
 			return true
