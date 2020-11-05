@@ -20,3 +20,25 @@ func (h *IntHeap) Pop() interface{} {
 	*h = old[0 : n-1]
 	return x
 }
+
+type TupleHeap [][]int
+
+func (th TupleHeap) Len() int { return len(th) }
+func (th TupleHeap) Less(i, j int) bool {
+	return th[i][1] > th[j][1]
+}
+func (th TupleHeap) Swap(i, j int) { th[i], th[j] = th[j], th[i] }
+
+func (th *TupleHeap) Push(x interface{}) {
+	// Push and Pop use pointer receivers because they modify the slice's length,
+	// not just its contents.
+	*th = append(*th, x.([]int))
+}
+
+func (th *TupleHeap) Pop() interface{} {
+	old := *th
+	n := len(old)
+	x := old[n-1]
+	*th = old[0 : n-1]
+	return x
+}
