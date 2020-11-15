@@ -42,3 +42,29 @@ func (th *TupleHeap) Pop() interface{} {
 	*th = old[0 : n-1]
 	return x
 }
+
+type MatrixItem struct {
+	Col int
+	Row int
+	Val int
+}
+
+type MatrixHeap []MatrixItem
+
+func (h MatrixHeap) Len() int           { return len(h) }
+func (h MatrixHeap) Less(i, j int) bool { return h[i].Val < h[j].Val }
+func (h MatrixHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
+
+func (h *MatrixHeap) Push(x interface{}) {
+	// Push and Pop use pointer receivers because they modify the slice's length,
+	// not just its contents.
+	*h = append(*h, x.(MatrixItem))
+}
+
+func (h *MatrixHeap) Pop() interface{} {
+	old := *h
+	n := len(old)
+	x := old[n-1]
+	*h = old[0 : n-1]
+	return x
+}
