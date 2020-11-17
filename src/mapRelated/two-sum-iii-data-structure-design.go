@@ -9,7 +9,7 @@ func (ts *TwoSumList) Add(a int) {
 	for _, item := range ts.data {
 		ts.index[item+a] = true
 	}
-	ts.data = append(ts.data, item)
+	ts.data = append(ts.data, a)
 }
 
 func (ts *TwoSumList) Find(k int) bool {
