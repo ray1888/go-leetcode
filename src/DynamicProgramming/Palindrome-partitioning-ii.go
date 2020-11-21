@@ -40,3 +40,40 @@ func minCut(s string) int {
 	}
 	return minArray[length-1]
 }
+
+func dp(s string) int {
+	if len(s) == 0 {
+		return -1
+	}
+	n := len(s)
+
+	dp := make([][]bool, n)
+	for i := 0; i < n; i++ {
+		dp[i] = make([]bool, n)
+	}
+
+	for i := n - 1; i >= 0; i-- {
+		for j := i; j < n; j++ {
+			if i == j {
+				dp[i][j] = true
+			} else if i+1 == j {
+				dp[i][j] = s[i] == s[j]
+			} else {
+				dp[i][j] = s[i] == s[j] && dp[i+1][j-1]
+			}
+		}
+	}
+
+	cut := make([]int, n+1)
+	cut[0] = -1
+	for j := 0; j < n; j++ {
+		cut[j+1] = cut[j] + 1
+		for i := j - 1; i >= 0; i-- {
+			if dp[i][j] {
+				cut[j+1] = min(cut[j+1], cut[i]+1)
+			}
+		}
+	}
+
+	return cut[n]
+}
