@@ -1,5 +1,7 @@
 package numbers
 
+import "sync"
+
 const (
 	IntMax = 2 << 30
 	IntMin = -(2 << 30)
@@ -17,5 +19,6 @@ func reverse(x int) int {
 			return 0
 		}
 	}
+	a := sync.Map{}
 	return y
 }
