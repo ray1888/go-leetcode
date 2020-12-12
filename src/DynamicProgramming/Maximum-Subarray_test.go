@@ -17,7 +17,7 @@ func TestMaxSubarray(t *testing.T) {
 		{[]int{-2147483647}, -2147483647},
 	}
 	for _, tt := range tests {
-		actual := maxSubArray(tt.in)
+		actual, _ := maxSubArray(tt.in)
 		if actual != tt.expected {
 			t.Fatalf("get insert postition wrong, input is %v, expected is %v, actual is %v",
 				tt.in, tt.expected, actual)
