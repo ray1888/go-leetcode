@@ -38,3 +38,31 @@ func coinChange(coins []int, amount int) int {
 	}
 
 }
+
+func coinChangeOn(coins []int, amount int) int {
+	dp := make([]int, amount+1)
+
+	for i := 1; i <= amount; i++ {
+		dp[i] = math.MaxInt32
+	}
+
+	for i := 1; i <= len(coins); i++ {
+		for j := 1; j <= amount; j++ {
+			var usedCoin int
+			if j < coins[i-1] {
+				usedCoin = math.MaxInt32
+			} else {
+				usedCoin = dp[j-coins[i-1]]
+			}
+			if usedCoin != math.MaxInt32 {
+				usedCoin += 1
+			}
+			dp[j] = min(usedCoin, dp[j])
+		}
+	}
+
+	if dp[amount] == math.MaxInt32 {
+		return -1
+	}
+	return dp[amount]
+}
