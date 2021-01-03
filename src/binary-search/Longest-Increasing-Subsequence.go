@@ -1,5 +1,12 @@
 package binary_search
 
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
 func _BinarySearchInsPos(d []int, end int, target int) int {
 	start := 0
 	end = end - 1
@@ -31,4 +38,20 @@ func lengthOfLIS(nums []int) int {
 		}
 	}
 	return lengthLIS
+}
+
+func lengthOfLISDP(nums []int) int {
+	dp := make([]int, len(nums))
+
+	maxValue := 1
+	for i := 0; i < len(nums); i++ {
+		dp[i] = 1
+		for j := i; j >= 0; j-- {
+			if nums[i] > nums[j] {
+				dp[i] = max(dp[i], dp[j]+1)
+			}
+		}
+		maxValue = max(maxValue, dp[i])
+	}
+	return maxValue
 }
