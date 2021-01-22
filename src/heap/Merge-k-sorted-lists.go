@@ -5,9 +5,9 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func mergeKListsMinHeap(lists []*ListNode) *ListNode {
+// func mergeKListsMinHeap(lists []*ListNode) *ListNode {
 
-}
+// }
 
 func mergeTwoList(left, right *ListNode) *ListNode {
 	dummy := &ListNode{}

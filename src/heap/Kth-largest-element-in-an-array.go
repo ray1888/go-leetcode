@@ -1,5 +1,7 @@
 package heap
 
+import "container/heap"
+
 func swap(nums []int, a, b int) {
 	tmp := nums[b]
 	nums[b] = nums[a]
@@ -49,20 +51,17 @@ func findKthLargestPartition(nums []int, k int) int {
 }
 
 func findKthLargestMinHeap(nums []int, k int) int {
-	if len(nums) == 0 || k > len(nums) {
-		return -1
-	}
-	low := 0
-	high := len(nums) - 1
-	for low <= high {
-		p := partition(nums, low, high)
-		if p == k-1 {
-			return nums[p]
-		} else if p > k-1 {
-			high = p - 1
+	pq := IntHeap{}
+	heap.Init(&pq)
+	for i := 0; i < len(nums); i++ {
+		if pq.Len() >= k {
+			if pq[0] < nums[i] {
+				_ = heap.Pop(&pq)
+				heap.Push(&pq, nums[i])
+			}
 		} else {
-			low = p + 1
+			heap.Push(&pq, nums[i])
 		}
 	}
-	return -1
+	return pq[0]
 }
