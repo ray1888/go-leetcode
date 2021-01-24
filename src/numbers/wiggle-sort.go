@@ -1,3 +1,5 @@
+package numbers
+
 import "sort"
 
 func wiggleSort(nums []int) {
