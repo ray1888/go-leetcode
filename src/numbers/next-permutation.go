@@ -14,10 +14,10 @@ func nextPermutation(nums []int) {
 		}
 		nums[i], nums[j] = nums[j], nums[i]
 	}
-	reverse(nums[i+1:])
+	reverse2(nums[i+1:])
 }
 
-func reverse(a []int) {
+func reverse2(a []int) {
 	for i, n := 0, len(a); i < n/2; i++ {
 		a[i], a[n-1-i] = a[n-1-i], a[i]
 	}

@@ -67,7 +67,7 @@ func maxPoints(points [][]int) int {
 			x /= g
 			y /= g
 			key := (x << 32) + y
-			if val, ok := result[key]; !ok {
+			if _, ok := result[key]; !ok {
 				result[key] = 0
 			}
 			count := result[key] + 1

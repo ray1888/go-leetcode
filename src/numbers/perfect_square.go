@@ -2,14 +2,6 @@ package numbers
 
 import "math"
 
-func min(a, b int) int {
-	if a < b {
-		return a
-	} else {
-		return b
-	}
-}
-
 func numSquaresDP(n int) int {
 	if n <= 0 {
 		return 0
