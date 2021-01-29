@@ -2,6 +2,18 @@ package DynamicProgramming
 
 import "math"
 
+/*
+	粉刷房子二：
+	用k个颜色粉刷房子，是原来medium的粉刷房子的变化版本，把3变成了K。
+
+	思路与原来的题目类似，但是偏码技巧上，因为他是需要对k个颜色同时进行对比，
+	因此如果直接用一个一维数组去更新的话，会把部分历史数据更新的话，回导致每次取值的时候，最小值不一定正确
+	因此此处使用二维数组来进行处理
+
+	压缩空间的思路：
+	1. 可以每次进行的时候先把上次的历史先Copy一份，然后再对copy继续去除c=j之后的排序操作
+*/
+
 func MinCostWithKColors(nums [][]int) int {
 	if len(nums) == 0 {
 		return 0
