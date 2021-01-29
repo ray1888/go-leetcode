@@ -1,33 +1,26 @@
 package backtracing
 
 import (
-	"fmt"
 	"sort"
 )
 
-// TODO 解决去重问题
-func combinationSum2NotUnique(candidates []int, target int) [][]int {
+func combinationSum2UsedArray(candidates []int, target int) [][]int {
 	if len(candidates) == 0 {
 		return [][]int{}
 	}
 	sort.Ints(candidates)
 	result := make([][]int, 0)
-	fmt.Println(candidates)
-	for i := 0; i < len(candidates); i++ {
-		tmp := make([]int, 0)
-		combineDfs(candidates, i, target, tmp, &result)
-	}
+	used := make([]bool, len(candidates))
+	tmp := make([]int, 0)
+	combineDfs(candidates, 0, target, tmp, used, &result)
 	return result
 }
 
-func combineDfs(candidates []int, start, target int, tmp []int, result *[][]int) {
+func combineDfs(candidates []int, start, target int, tmp []int, used []bool, result *[][]int) {
 	if target < 0 {
 		return
 	}
 	if target == 0 {
-		if start == 4 {
-			fmt.Println(start, tmp)
-		}
 		data := make([]int, len(tmp))
 		copy(data, tmp)
 		*result = append(*result, data)
@@ -35,8 +28,13 @@ func combineDfs(candidates []int, start, target int, tmp []int, result *[][]int)
 	}
 
 	for i := start; i < len(candidates); i++ {
+		if i > 0 && candidates[i] == candidates[i-1] && used[i-1] == false {
+			continue
+		}
 		tmp = append(tmp, candidates[i])
-		combineDfs(candidates, i+1, target-candidates[i], tmp, result)
+		used[i] = true
+		combineDfs(candidates, i+1, target-candidates[i], tmp, used, result)
+		used[i] = false
 		tmp = tmp[:len(tmp)-1]
 	}
 }
