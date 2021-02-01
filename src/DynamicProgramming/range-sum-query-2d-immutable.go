@@ -4,7 +4,7 @@ type NumMatrix struct {
 	PrefixSum [][]int // 保存二维矩阵的所有前缀和
 }
 
-func Constructor(matrix [][]int) NumMatrix {
+func Constructor2(matrix [][]int) NumMatrix {
 	// 首先处理边界情况
 	if matrix == nil || len(matrix) == 0 || matrix[0] == nil || len(matrix[0]) == 0 {
 		prefixSum := make([][]int, 1) // 把前缀和定义为1x1的二维矩阵
