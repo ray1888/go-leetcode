@@ -9,6 +9,7 @@ func numberOfSubarrays(nums []int, k int) int {
 	cnt := make([]int, len(nums)+1)
 	cnt[0] = 1
 	for i := 1; i <= len(nums); i++ {
+		// nums[i-1] & 1目的是判断这个是是否为基数
 		pre[i] = pre[i-1] + (nums[i-1] & 1)
 		if pre[i] >= k {
 			res += cnt[pre[i]-k]
@@ -27,6 +28,7 @@ func numberOfSubarraysByMap(nums []int, k int) int {
 	res := 0
 	pre := make([]int, len(nums)+1)
 	for i := 1; i <= len(nums); i++ {
+		// nums[i-1] & 1目的是判断这个是是否为基数
 		pre[i] = pre[i-1] + (nums[i-1] & 1)
 		if pre[i] >= k {
 			if val, ok := preSumMap[pre[i]-k]; ok {
