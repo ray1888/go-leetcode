@@ -1,7 +1,6 @@
 package DynamicProgramming
 
 import (
-	"fmt"
 	"go-leetcode/src/datastructure"
 )
 
@@ -75,6 +74,5 @@ func indexOf(val int, nums []int) int {
 		}
 	}
 
-	msg := fmt.Sprintf("%d 不存在于 %v 中", val, nums)
-	panic(msg)
+	return -1
 }
