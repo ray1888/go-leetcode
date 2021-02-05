@@ -1,4 +1,4 @@
-package DynamicProgramming
+package parlidrome
 
 import "testing"
 

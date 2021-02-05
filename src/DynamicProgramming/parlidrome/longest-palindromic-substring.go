@@ -1,4 +1,4 @@
-package DynamicProgramming
+package parlidrome
 
 func longestPalindrome(s string) string {
 	if len(s) == 0 {

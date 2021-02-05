@@ -1,4 +1,4 @@
-package DynamicProgramming
+package parlidrome
 
 import "testing"
 
@@ -14,7 +14,7 @@ func TestLongestPalindromicString(t *testing.T) {
 		{"abcga", 1},
 	}
 	for _, tt := range tests {
-		actual := LongestCountSubstrings(tt.in)
+		actual := longestCountSubstrings(tt.in)
 		if actual != tt.expected {
 			t.Fatalf("get insert postition wrong, input is %v, expected is %v, actual is %v",
 				tt.in, tt.expected, actual)
@@ -34,7 +34,7 @@ func TestLongestPalindromicStringExpand(t *testing.T) {
 		{"abcga", 1},
 	}
 	for _, tt := range tests {
-		actual := LongestSubstringsExpand(tt.in)
+		actual := longestSubstringsExpand(tt.in)
 		if actual != tt.expected {
 			t.Fatalf("get insert postition wrong, input is %v, expected is %v, actual is %v",
 				tt.in, tt.expected, actual)
