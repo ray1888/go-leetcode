@@ -1,6 +1,9 @@
-package DynamicProgramming
+package stock
 
-import "math"
+import (
+	"go-leetcode/src/utils"
+	"math"
+)
 
 func maxProfit(prices []int) int {
 	if len(prices) == 0 {
@@ -12,7 +15,7 @@ func maxProfit(prices []int) int {
 		if prices[i] < minVal {
 			minVal = prices[i]
 		}
-		cur = max(cur, prices[i]-minVal)
+		cur = utils.Max(cur, prices[i]-minVal)
 	}
 	return cur
 }

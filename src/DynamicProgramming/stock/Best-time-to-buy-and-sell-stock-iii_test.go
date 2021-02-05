@@ -1,4 +1,4 @@
-package DynamicProgramming
+package stock
 
 import "testing"
 
@@ -14,7 +14,7 @@ func TestMaxPrices3(t *testing.T) {
 		{[]int{7, 6, 4, 3, 1}, 0},
 	}
 	for _, tt := range tests {
-		actual := maxProfit3(tt.in)
+		actual := maxProfitIII(tt.in)
 		if actual != tt.expected {
 			t.Fatalf("get insert postition wrong, input is %v, expected is %v, actual is %v",
 				tt.in, tt.expected, actual)
