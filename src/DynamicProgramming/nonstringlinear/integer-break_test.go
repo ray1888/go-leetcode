@@ -1,4 +1,4 @@
-package DynamicProgramming
+package nonstringlinear
 
 import "testing"
 
