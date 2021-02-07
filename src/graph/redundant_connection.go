@@ -9,7 +9,7 @@ func hasCycleRC(cur int, target int, graph map[int]*set.Set, pre int) bool {
 		return true
 	}
 	graph[cur].Do()
-	for _, num := range  {
+	for _, num := range graph {
 		if num == pre {
 			continue
 		}

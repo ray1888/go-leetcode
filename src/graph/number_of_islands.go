@@ -1,16 +1,16 @@
 package graph
 
-func dfs(graph [][]byte, visited [][]bool, i, j int) {
+func dfsIsland(graph [][]byte, visited [][]bool, i, j int) {
 	row := len(graph) - 1
 	col := len(graph[0]) - 1
 	if i < 0 || j < 0 || i > row || j > col || graph[i][j] == '0' || visited[i][j] {
 		return
 	}
 	visited[i][j] = true
-	dfs(graph, visited, i+1, j)
-	dfs(graph, visited, i-1, j)
-	dfs(graph, visited, i, j+1)
-	dfs(graph, visited, i, j-1)
+	dfsIsland(graph, visited, i+1, j)
+	dfsIsland(graph, visited, i-1, j)
+	dfsIsland(graph, visited, i, j+1)
+	dfsIsland(graph, visited, i, j-1)
 	return
 }
 
@@ -30,7 +30,7 @@ func numIslands(grid [][]byte) int {
 		for j := 0; j < col; j++ {
 			if grid[i][j] == '1' && !visits[i][j] {
 				number++
-				dfs(grid, visits, i, j)
+				dfsIsland(grid, visits, i, j)
 			}
 		}
 	}
