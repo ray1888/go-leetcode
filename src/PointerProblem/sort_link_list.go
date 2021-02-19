@@ -45,3 +45,37 @@ func sortList(head *ListNode) *ListNode {
 	left := sortList(head)
 	return mergeTwoLinkList(left, right)
 }
+
+func swapNode(a, b *ListNode) {
+	tmp := a.Val
+	a.Val = b.Val
+	b.Val = tmp
+}
+
+func sortListQuickSortRec(head, end *ListNode) {
+	if head == end || head.Next == end {
+		return
+	}
+	slow := head
+	fast := head.Next
+
+	pivot := head.Val
+	for fast != end {
+		if fast.Val < pivot {
+			slow = slow.Next
+			swapNode(slow, fast)
+		}
+		fast = fast.Next
+	}
+	swapNode(head, slow)
+	sortListQuickSortRec(head, slow)
+	sortListQuickSortRec(slow.Next, end)
+}
+
+func sortListQuickSort(head *ListNode) *ListNode {
+	if head == nil {
+		return head
+	}
+	sortListQuickSortRec(head, nil)
+	return head
+}
