@@ -12,3 +12,8 @@ type ConnectNode struct {
 	Right *ConnectNode
 	Next  *ConnectNode
 }
+
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
