@@ -1,10 +1,12 @@
-package PointerProblem
+package swapnode
 
-func swapPairs(head *ListNode) *ListNode {
+import "go-leetcode/src/datastructure"
+
+func swapPairs(head *datastructure.ListNode) *datastructure.ListNode {
 	if head == nil {
 		return nil
 	}
-	dummy := new(ListNode)
+	dummy := new(datastructure.ListNode)
 	dummy.Next = head
 	cur := dummy
 	for cur.Next != nil && cur.Next.Next != nil {
