@@ -36,3 +36,41 @@ func isPalindrome(head *datastructure.ListNode) bool {
 	}
 	return true
 }
+
+// split and reverse version
+func isPalindromeReverse(head *datastructure.ListNode) bool {
+	if head == nil {
+		return true
+	}
+	slow := head
+	fast := head
+
+	for fast.Next != nil && fast.Next.Next != nil {
+		slow = slow.Next
+		fast = fast.Next.Next
+	}
+
+	reverseHead := reverse(slow.Next)
+	p1 := head
+	for reverseHead != nil && p1 != nil {
+		if reverseHead.Val != p1.Val {
+			return false
+		}
+		p1 = p1.Next
+		reverseHead = reverseHead.Next
+	}
+	// slow.Next = reverse(reverseHead)
+	return true
+}
+
+func reverse(head *datastructure.ListNode) *datastructure.ListNode {
+	var pre *datastructure.ListNode
+	cur := head
+	for cur != nil {
+		next := cur.Next
+		cur.Next = pre
+		pre = cur
+		cur = next
+	}
+	return pre
+}
