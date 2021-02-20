@@ -1,4 +1,4 @@
-package DynamicProgramming
+package backpack
 
 import "testing"
 

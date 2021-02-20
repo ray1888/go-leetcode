@@ -1,4 +1,4 @@
-package DynamicProgramming
+package backpack
 
 func changerecur(coins []int, start, sum int) int {
 	if sum == 0 {
@@ -27,9 +27,9 @@ func ChangeDP(amount int, coins []int) int {
 	}
 	length := len(coins)
 	dp := make([][]int, (length + 1))
-	single_dis := make([]int, (length+1)*(amount+1))
+	singleDis := make([]int, (length+1)*(amount+1))
 	for i := 0; i <= length; i++ {
-		dp[i], single_dis = single_dis[:(amount+1)], single_dis[(amount+1):]
+		dp[i], singleDis = singleDis[:(amount+1)], singleDis[(amount+1):]
 	}
 
 	for i := 0; i <= length; i++ {

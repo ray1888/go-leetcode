@@ -1,6 +1,9 @@
-package DynamicProgramming
+package backpack
 
-import "math"
+import (
+	"go-leetcode/src/utils"
+	"math"
+)
 
 func coinChange(coins []int, amount int) int {
 	if len(coins) == 0 {
@@ -8,9 +11,9 @@ func coinChange(coins []int, amount int) int {
 	}
 	length := len(coins) + 1
 	dp := make([][]int, length*(amount+1))
-	single_dis := make([]int, length*(amount+1))
+	singleDis := make([]int, length*(amount+1))
 	for i := 0; i < length; i++ {
-		dp[i], single_dis = single_dis[:(amount+1)], single_dis[(amount+1):]
+		dp[i], singleDis = singleDis[:(amount+1)], singleDis[(amount+1):]
 	}
 
 	for i := 0; i < length; i++ {
@@ -24,19 +27,17 @@ func coinChange(coins []int, amount int) int {
 	for i := 1; i < length; i++ {
 		for j := 1; j <= amount; j++ {
 			if j >= coins[i-1] {
-				dp[i][j] = min(dp[i-1][j], dp[i][j-coins[i-1]]+1)
+				dp[i][j] = utils.Min(dp[i-1][j], dp[i][j-coins[i-1]]+1)
 			} else {
-				dp[i][j] = min(dp[i-1][j], int(math.Pow(2, 32)))
+				dp[i][j] = utils.Min(dp[i-1][j], int(math.Pow(2, 32)))
 			}
 		}
 	}
 	// this judgement is for leetcode testcase passed
 	if dp[length-1][amount] == int(math.Pow(2, 32)) {
 		return -1
-	} else {
-		return dp[length-1][amount]
 	}
-
+	return dp[length-1][amount]
 }
 
 func coinChangeOn(coins []int, amount int) int {
@@ -55,9 +56,9 @@ func coinChangeOn(coins []int, amount int) int {
 				usedCoin = dp[j-coins[i-1]]
 			}
 			if usedCoin != math.MaxInt32 {
-				usedCoin += 1
+				usedCoin++
 			}
-			dp[j] = min(usedCoin, dp[j])
+			dp[j] = utils.Min(usedCoin, dp[j])
 		}
 	}
 

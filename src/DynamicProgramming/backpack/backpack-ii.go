@@ -1,4 +1,6 @@
-package DynamicProgramming
+package backpack
+
+import "go-leetcode/src/utils"
 
 func backPackII(m int, A []int, V []int) int {
 	dp := make([][]int, len(A)+1)
@@ -11,9 +13,9 @@ func backPackII(m int, A []int, V []int) int {
 		for j := 1; j <= m; j++ {
 			dp[i][j] = dp[i-1][j]
 			if j >= A[i-1] {
-				dp[i][j] = max(dp[i-1][j], dp[i-1][j-A[i-1]]+V[i-1])
+				dp[i][j] = utils.Max(dp[i-1][j], dp[i-1][j-A[i-1]]+V[i-1])
 			}
-			maxValue = max(maxValue, dp[i][j])
+			maxValue = utils.Max(maxValue, dp[i][j])
 		}
 	}
 	return maxValue
@@ -28,7 +30,7 @@ func backPackIIOnSpace(m int, A []int, V []int) int {
 
 	for i := 1; i <= len(A); i++ {
 		for j := m; j >= A[i-1]; j-- {
-			dp[j] = max(dp[j], dp[j-A[i-1]]+V[i-1])
+			dp[j] = utils.Max(dp[j], dp[j-A[i-1]]+V[i-1])
 		}
 	}
 	return dp[m]
