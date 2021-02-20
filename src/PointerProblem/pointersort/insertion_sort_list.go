@@ -1,9 +1,11 @@
-package PointerProblem
+package pointersort
 
-func insertionSortList(head *ListNode) *ListNode {
-	var p *ListNode
-	var next *ListNode
-	dummy := &ListNode{0, nil}
+import "go-leetcode/src/datastructure"
+
+func insertionSortList(head *datastructure.ListNode) *datastructure.ListNode {
+	var p *datastructure.ListNode
+	var next *datastructure.ListNode
+	dummy := &datastructure.ListNode{Val: 0, Next: nil}
 	cur := head
 	for cur != nil {
 		next = cur.Next
@@ -18,9 +20,9 @@ func insertionSortList(head *ListNode) *ListNode {
 	return dummy.Next
 }
 
-func insertionSortListFast(head *ListNode) *ListNode {
-	var next *ListNode
-	dummy := &ListNode{0, nil}
+func insertionSortListFast(head *datastructure.ListNode) *datastructure.ListNode {
+	var next *datastructure.ListNode
+	dummy := &datastructure.ListNode{Val: 0, Next: nil}
 	p := dummy
 	cur := head
 	for cur != nil {

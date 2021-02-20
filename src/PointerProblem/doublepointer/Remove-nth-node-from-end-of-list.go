@@ -1,7 +1,9 @@
-package PointerProblem
+package doublepointer
 
-func removeNthFromEnd(head *ListNode, n int) *ListNode {
-	dummy := &ListNode{}
+import "go-leetcode/src/datastructure"
+
+func removeNthFromEnd(head *datastructure.ListNode, n int) *datastructure.ListNode {
+	dummy := &datastructure.ListNode{}
 	dummy.Next = head
 
 	fast := dummy
@@ -9,7 +11,7 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 
 	for n > 0 && fast.Next != nil {
 		fast = fast.Next
-		n -= 1
+		n--
 	}
 
 	if n != 0 {

@@ -1,4 +1,4 @@
-package PointerProblem
+package cycleproblem
 
 /*
 [3,2,0,-4]

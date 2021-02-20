@@ -1,8 +1,10 @@
-package PointerProblem
+package cycleproblem
 
-func detectCycle(head *ListNode) *ListNode {
+import "go-leetcode/src/datastructure"
+
+func hasCycle(head *datastructure.ListNode) bool {
 	if head == nil {
-		return nil
+		return false
 	}
 	fast := head
 	slow := head
@@ -11,13 +13,8 @@ func detectCycle(head *ListNode) *ListNode {
 		fast = fast.Next.Next
 		slow = slow.Next
 		if slow == fast {
-			p := head
-			for p != slow {
-				p = p.Next
-				slow = slow.Next
-			}
-			return slow
+			return true
 		}
 	}
-	return nil
+	return false
 }

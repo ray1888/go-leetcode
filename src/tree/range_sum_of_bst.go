@@ -1,6 +1,8 @@
 package tree
 
-func rangeSumBST(root *TreeNode, L int, R int) int {
+import "go-leetcode/src/datastructure"
+
+func rangeSumBST(root *datastructure.TreeNode, L int, R int) int {
 	if root == nil {
 		return 0
 	}

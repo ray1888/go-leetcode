@@ -1,4 +1,6 @@
-package PointerProblem
+package pointersort
+
+import "go-leetcode/src/datastructure"
 
 /**
  * Definition for singly-linked list.
@@ -8,8 +10,8 @@ package PointerProblem
  * }
  */
 
-func mergeTwoLinkList(l1, l2 *ListNode) *ListNode {
-	dummy := &ListNode{Val: 0, Next: nil}
+func mergeTwoLinkList(l1, l2 *datastructure.ListNode) *datastructure.ListNode {
+	dummy := &datastructure.ListNode{Val: 0, Next: nil}
 	p := dummy
 	for l1 != nil && l2 != nil {
 		if l1.Val < l2.Val {
@@ -30,7 +32,7 @@ func mergeTwoLinkList(l1, l2 *ListNode) *ListNode {
 	return dummy.Next
 }
 
-func sortList(head *ListNode) *ListNode {
+func sortList(head *datastructure.ListNode) *datastructure.ListNode {
 	if head == nil || head.Next == nil {
 		return head
 	}
@@ -46,13 +48,13 @@ func sortList(head *ListNode) *ListNode {
 	return mergeTwoLinkList(left, right)
 }
 
-func swapNode(a, b *ListNode) {
+func swapNode(a, b *datastructure.ListNode) {
 	tmp := a.Val
 	a.Val = b.Val
 	b.Val = tmp
 }
 
-func sortListQuickSortRec(head, end *ListNode) {
+func sortListQuickSortRec(head, end *datastructure.ListNode) {
 	if head == end || head.Next == end {
 		return
 	}
@@ -72,7 +74,7 @@ func sortListQuickSortRec(head, end *ListNode) {
 	sortListQuickSortRec(slow.Next, end)
 }
 
-func sortListQuickSort(head *ListNode) *ListNode {
+func sortListQuickSort(head *datastructure.ListNode) *datastructure.ListNode {
 	if head == nil {
 		return head
 	}

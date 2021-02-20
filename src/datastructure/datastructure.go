@@ -6,6 +6,11 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+type NTreeNode struct {
+	Val      int
+	Children []*NTreeNode
+}
+
 type ConnectNode struct {
 	Val   int
 	Left  *ConnectNode
@@ -16,4 +21,15 @@ type ConnectNode struct {
 type ListNode struct {
 	Val  int
 	Next *ListNode
+}
+
+func GenListNode(data []int) *ListNode {
+	head := new(ListNode)
+	p := head
+	for _, value := range data {
+		p.Val = value
+		p.Next = new(ListNode)
+		p = p.Next
+	}
+	return head.Next
 }

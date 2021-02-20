@@ -1,5 +1,7 @@
 package tree
 
+import "go-leetcode/src/datastructure"
+
 /**
  * Definition for a Node.
  * type Node struct {
@@ -8,7 +10,7 @@ package tree
  * }
  */
 
-func maxDepthNAnyTree(root *Node) int {
+func maxDepthNAnyTree(root *datastructure.NTreeNode) int {
 	if root == nil {
 		return 0
 	}
@@ -18,7 +20,7 @@ func maxDepthNAnyTree(root *Node) int {
 	return level
 }
 
-func maxDepthFunc(root *Node, depth *int, maxDepth *int) {
+func maxDepthFunc(root *datastructure.NTreeNode, depth *int, maxDepth *int) {
 	if root == nil {
 		*maxDepth = max(*maxDepth, *depth)
 		return

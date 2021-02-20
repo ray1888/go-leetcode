@@ -1,11 +1,13 @@
 package tree
 
-func rightSideView(root *TreeNode) []int {
+import "go-leetcode/src/datastructure"
+
+func rightSideView(root *datastructure.TreeNode) []int {
 	if root == nil {
 		return []int{}
 	}
 	result := make([]int, 0)
-	q := make([]*TreeNode, 0)
+	q := make([]*datastructure.TreeNode, 0)
 	q = append(q, root)
 	for len(q) != 0 {
 		length := len(q)

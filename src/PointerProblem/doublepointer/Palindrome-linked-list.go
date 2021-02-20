@@ -1,6 +1,8 @@
-package PointerProblem
+package doublepointer
 
-func isPalindrome(head *ListNode) bool {
+import "go-leetcode/src/datastructure"
+
+func isPalindrome(head *datastructure.ListNode) bool {
 	if head == nil {
 		return true
 	}
@@ -9,11 +11,11 @@ func isPalindrome(head *ListNode) bool {
 	count := 0
 	for p != nil {
 		p = p.Next
-		count += 1
+		count++
 	}
 
 	cur := head
-	pre := &ListNode{}
+	pre := &datastructure.ListNode{}
 
 	for i := 0; i < (count / 2); i++ {
 		next := cur.Next

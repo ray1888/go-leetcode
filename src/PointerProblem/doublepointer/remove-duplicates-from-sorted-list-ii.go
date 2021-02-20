@@ -1,11 +1,13 @@
-package PointerProblem
+package doublepointer
 
-func deleteDuplicates(head *ListNode) *ListNode {
+import "go-leetcode/src/datastructure"
+
+func deleteDuplicates(head *datastructure.ListNode) *datastructure.ListNode {
 	if head == nil {
 		return head
 	}
 
-	dummy := new(ListNode)
+	dummy := new(datastructure.ListNode)
 	prev := dummy
 	prev.Next = head
 	cur := prev.Next

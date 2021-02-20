@@ -1,17 +1,19 @@
 package tree
 
+import "go-leetcode/src/datastructure"
+
 type BSTIterator struct {
-	stack []*TreeNode
+	stack []*datastructure.TreeNode
 }
 
-func Constructor(root *TreeNode) BSTIterator {
+func Constructor(root *datastructure.TreeNode) BSTIterator {
 	it := BSTIterator{}
-	it.stack = make([]*TreeNode, 0)
+	it.stack = make([]*datastructure.TreeNode, 0)
 	it.PushLeft(root)
 	return it
 }
 
-func (this *BSTIterator) PushLeft(node *TreeNode) {
+func (this *BSTIterator) PushLeft(node *datastructure.TreeNode) {
 	for node != nil {
 		this.stack = append(this.stack, node)
 		node = node.Left

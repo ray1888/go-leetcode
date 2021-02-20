@@ -1,12 +1,14 @@
 package tree
 
-func levelOrderNAryTree(root *Node) [][]int {
+import "go-leetcode/src/datastructure"
+
+func levelOrderNAryTree(root *datastructure.NTreeNode) [][]int {
 	if root == nil {
 		return [][]int{}
 	}
 	result := make([][]int, 0)
 
-	queue := make([]*Node, 0)
+	queue := make([]*datastructure.NTreeNode, 0)
 	queue = append(queue, root)
 	for len(queue) > 0 {
 		length := len(queue)
