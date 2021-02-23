@@ -34,7 +34,7 @@ func lengthOfLIS(nums []int) int {
 		index := _BinarySearchInsPos(d, lengthLIS, val)
 		d[index] = val
 		if index == lengthLIS {
-			lengthLIS += 1
+			lengthLIS++
 		}
 	}
 	return lengthLIS
@@ -46,7 +46,7 @@ func lengthOfLISDP(nums []int) int {
 	maxValue := 1
 	for i := 0; i < len(nums); i++ {
 		dp[i] = 1
-		for j := i; j >= 0; j-- {
+		for j := 0; j <= i; j++ {
 			if nums[i] > nums[j] {
 				dp[i] = max(dp[i], dp[j]+1)
 			}

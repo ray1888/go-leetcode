@@ -73,7 +73,18 @@ func Test_lengthOfLISDP(t *testing.T) {
 		args args
 		want int
 	}{
-		// TODO: Add test cases.
+		{
+			args: args{
+				nums: []int{1, 8, 2, 6, 4, 5},
+			},
+			want: 4,
+		},
+		{
+			args: args{
+				nums: []int{10, 9, 2, 5, 3, 7, 101, 18},
+			},
+			want: 4,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
