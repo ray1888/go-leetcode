@@ -18,6 +18,12 @@ type ConnectNode struct {
 	Next  *ConnectNode
 }
 
+type DoubleLinkListNode struct {
+	Val  int
+	Next *DoubleLinkListNode
+	Pre  *DoubleLinkListNode
+}
+
 type ListNode struct {
 	Val  int
 	Next *ListNode
