@@ -1,5 +1,7 @@
 package tree
 
+import "go-leetcode/src/datastructure"
+
 //func _lowestCommonAncestorBT(root, p, q *datastructure.TreeNode, result *[]*datastructure.TreeNode,
 //	record *map[int][]*datastructure.TreeNode) {
 //	if root == nil {
@@ -42,3 +44,55 @@ package tree
 //		return p_map[index]
 //	}
 //}
+
+func lowestCommonAncestorBT(root, p, q *datastructure.TreeNode) *datastructure.TreeNode {
+	if root == nil {
+		return nil
+	}
+	if root.Val == p.Val || root.Val == q.Val {
+		return root
+	}
+	left := lowestCommonAncestorBT(root.Left, p, q)
+	right := lowestCommonAncestorBT(root.Right, p, q)
+	if left != nil && right != nil {
+		return root
+	}
+	if left == nil {
+		return right
+	}
+	return left
+}
+
+func lowestCommonAncestorDFS(root, p, q *datastructure.TreeNode) *datastructure.TreeNode {
+	parent := map[int]*datastructure.TreeNode{}
+	visited := map[int]bool{}
+
+	var dfs func(*datastructure.TreeNode)
+	dfs = func(r *datastructure.TreeNode) {
+		if r == nil {
+			return
+		}
+		if r.Left != nil {
+			parent[r.Left.Val] = r
+			dfs(r.Left)
+		}
+		if r.Right != nil {
+			parent[r.Right.Val] = r
+			dfs(r.Right)
+		}
+	}
+	dfs(root)
+
+	for p != nil {
+		visited[p.Val] = true
+		p = parent[p.Val]
+	}
+	for q != nil {
+		if visited[q.Val] {
+			return q
+		}
+		q = parent[q.Val]
+	}
+
+	return nil
+}
