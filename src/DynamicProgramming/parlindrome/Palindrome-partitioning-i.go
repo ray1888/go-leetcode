@@ -1,4 +1,4 @@
-package DynamicProgramming
+package parlindrome
 
 func stringPartition(dp [][]bool, s string, start, end int, res *[][]string, tmp []string) {
 	if start == end {

@@ -1,6 +1,9 @@
-package DynamicProgramming
+package parlindrome
 
-import "math"
+import (
+	"go-leetcode/src/utils"
+	"math"
+)
 
 func minCut(s string) int {
 
@@ -32,7 +35,7 @@ func minCut(s string) int {
 					tmp = 0
 					break
 				} else {
-					tmp = min(tmp, minArray[i-1]+1)
+					tmp = utils.Min(tmp, minArray[i-1]+1)
 				}
 			}
 		}
@@ -70,7 +73,7 @@ func dp(s string) int {
 		cut[j+1] = cut[j] + 1
 		for i := j - 1; i >= 0; i-- {
 			if dp[i][j] {
-				cut[j+1] = min(cut[j+1], cut[i]+1)
+				cut[j+1] = utils.Min(cut[j+1], cut[i]+1)
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-package DynamicProgramming
+package parlindrome
 
 func CountSubstrings(s string) int {
 	if s == "" || len(s) == 0 {
