@@ -1,4 +1,4 @@
-package numbers
+package sprialmatrix
 
 func spiralOrder(matrix [][]int) []int {
 	if len(matrix) == 0 {
