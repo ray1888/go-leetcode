@@ -1,4 +1,4 @@
-package maxnumber
+package montonicstack
 
 func nextGreaterElements(nums []int) []int {
 	n := len(nums)

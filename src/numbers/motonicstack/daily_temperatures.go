@@ -1,4 +1,4 @@
-package numbers
+package montonicstack
 
 func dailyTemperatures(T []int) []int {
 	if len(T) == 0 {
@@ -8,7 +8,6 @@ func dailyTemperatures(T []int) []int {
 	result := make([]int, len(T))
 	for i := 0; i < len(T); i++ {
 		for len(stack) != 0 && T[i] > T[stack[len(stack)-1]] {
-			// fmt.Println(stack)
 			idx := stack[len(stack)-1]
 			stack = stack[:len(stack)-1]
 			result[idx] = i - idx

@@ -1,4 +1,4 @@
-package maxnumber
+package montonicstack
 
 import (
 	"reflect"
