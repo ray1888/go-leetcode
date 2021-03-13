@@ -1,5 +1,7 @@
 package heap
 
+import "container/heap"
+
 func topKFrequent(nums []int, k int) []int {
 	if len(nums) <= 0 || k <= 0 {
 		return []int{}
@@ -34,4 +36,24 @@ func topKFrequent(nums []int, k int) []int {
 	}
 	return result
 
+}
+
+func topKFrequentHeap(nums []int, k int) []int {
+	occurrences := map[int]int{}
+	for _, num := range nums {
+		occurrences[num]++
+	}
+	h := &IntHeap{}
+	heap.Init(h)
+	for key, value := range occurrences {
+		heap.Push(h, [2]int{key, value})
+		if h.Len() > k {
+			heap.Pop(h)
+		}
+	}
+	ret := make([]int, k)
+	for i := 0; i < k; i++ {
+		ret[k-i-1] = heap.Pop(h).([2]int)[0]
+	}
+	return ret
 }
