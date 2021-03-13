@@ -1,4 +1,4 @@
-package slidingwindows
+package slidingwindow
 
 func maxSlidingWindow(nums []int, k int) []int {
 	var result []int

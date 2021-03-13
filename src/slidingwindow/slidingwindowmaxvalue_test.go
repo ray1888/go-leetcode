@@ -1,4 +1,4 @@
-package slidingwindows
+package slidingwindow
 
 import (
 	"reflect"
